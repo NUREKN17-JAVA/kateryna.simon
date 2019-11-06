@@ -6,8 +6,10 @@ import nure.kn.simon.domain.User;
 import nure.kn.simon.domain_db.HsqldbUserDao;
 
 import org.dbunit.DatabaseTestCase;
+import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
+import org.dbunit.dataset.xml.XmlDataSet;
 
 public class HsqldbUserDaoTest extends DatabaseTestCase {
 
@@ -37,7 +39,6 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	
 	protected void setUp() throws Exception {
 		super.setUp();
-		connectionFactory = new ConnectionFactoryImpl();
 		dao = new HsqldbUserDao(connectionFactory);
 	}
 
@@ -47,14 +48,15 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 
 	@Override
 	protected IDatabaseConnection getConnection() throws Exception {
-		// TODO Auto-generated method stub !!!
-		return null;
+		connectionFactory = new ConnectionFactoryImpl();
+		return new DatabaseConnection(connectionFactory.getConnection());
 	}
 
 	@Override
 	protected IDataSet getDataSet() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		IDataSet dataSet = new XmlDataSet(getClass().getClassLoader()
+				.getResourceAsStream("usersDataSet.xml"));
+		return dataSet;
 	}
 
 }
