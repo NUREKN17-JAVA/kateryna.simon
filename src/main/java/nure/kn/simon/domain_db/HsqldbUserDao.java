@@ -1,8 +1,10 @@
 package nure.kn.simon.domain_db;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 
@@ -28,7 +30,17 @@ public class HsqldbUserDao implements Dao<User> {
 			if (numberOfRows != 1) {
 				throw new DatabaseException("Number of inserted rows: " + numberOfRows);
 			}
-			return null;
+			CallableStatement callableStatement =
+					connection.prepareCall("call IDENTITY()");
+			ResultSet key = callableStatement.executeQuery();
+			if (key.next()) {
+				entity.setId(new Long(key.getLong(1)));
+			}
+			key.close();
+			callableStatement.close();
+			statement.close();
+			connection.close();
+			return entity; // <null
 		} catch (SQLException e) {
 			throw new DatabaseException(e);
 		}
