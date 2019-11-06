@@ -47,7 +47,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 
 	@Override
 	protected IDatabaseConnection getConnection() throws Exception {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub !!!
 		return null;
 	}
 
