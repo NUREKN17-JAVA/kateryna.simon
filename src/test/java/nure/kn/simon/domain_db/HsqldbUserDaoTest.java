@@ -1,6 +1,7 @@
 package nure.kn.simon.domain_db;
 
 import java.util.Calendar;
+import java.util.Collection;
 
 import nure.kn.simon.domain.User;
 import nure.kn.simon.domain_db.HsqldbUserDao;
@@ -35,6 +36,17 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 		assertEquals(FIRST_NAME, userToCheck);
 		assertEquals(LAST_NAME, userToCheck);
 		assertEquals(calendar.getTime(), userToCheck.getDateOfBirth());
+	}
+	
+	public void testFindAll(){
+		try {
+			Collection collection = dao.findAll();
+			assertNotNull("Collection is null", collection);
+			assertNotNull("Collection size", collection.size());
+		} catch (DatabaseException e) {
+			e.printStackTrace();
+			fail(e.toString());
+		}
 	}
 	
 	protected void setUp() throws Exception {
