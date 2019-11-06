@@ -3,7 +3,6 @@ package nure.kn.simon.domain_db;
 import java.util.Calendar;
 
 import nure.kn.simon.domain.User;
-
 import nure.kn.simon.domain_db.HsqldbUserDao;
 
 import org.dbunit.DatabaseTestCase;
@@ -12,6 +11,7 @@ import org.dbunit.dataset.IDataSet;
 
 public class HsqldbUserDaoTest extends DatabaseTestCase {
 
+	private ConnectionFactory connectionFactory;
 	private HsqldbUserDao dao;
 	private static final String LAST_NAME = "Simon";
 	private static final String FIRST_NAME = "Kate";
@@ -37,6 +37,8 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	
 	protected void setUp() throws Exception {
 		super.setUp();
+		connectionFactory = new ConnectionFactoryImpl();
+		dao = new HsqldbUserDao(connectionFactory);
 	}
 
 	protected void tearDown() throws Exception {
