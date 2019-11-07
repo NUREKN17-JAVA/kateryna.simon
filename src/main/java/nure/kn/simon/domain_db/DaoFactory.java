@@ -3,6 +3,8 @@ package nure.kn.simon.domain_db;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.hsqldb.User;
+
 public class DaoFactory {
 
 	private static final String USER_DAO = "dao.knure.ctde.usermanagement_db.UserDao";
@@ -31,11 +33,11 @@ public class DaoFactory {
 	return new ConnectionFactoryImpl(driver, url, user, password);
 			}
 	
-	public Dao<?> getUserDao() {
-		Dao<?> result = null;
+	public Dao<User> getUserDao() {
+		Dao<User> result = null;
 		try {
-			Class<?> clazz = Class.forName(properties.getProperty(USER_DAO));
-			result = (Dao<?>) clazz.newInstance();
+			Class<User> clazz = (Class<User>) Class.forName(properties.getProperty(USER_DAO));
+			result = (Dao<User>) clazz.newInstance();
 			result.setConnectionFactory(getConnectionFactory());
 		} catch (Exception e) {
             throw new RuntimeException(e);

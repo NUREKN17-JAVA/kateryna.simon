@@ -1,5 +1,7 @@
 package nure.kn.simon.domain_db;
 
+import org.hsqldb.User;
+
 import junit.framework.TestCase;
 
 public class DaoFactoryTest extends TestCase {
@@ -16,7 +18,7 @@ public class DaoFactoryTest extends TestCase {
 		try {
 			DaoFactory daoFactory = DaoFactory.getInstance();
 			assertNotNull("DaoFactory instance is null", daoFactory);
-			Dao<?> userDao = daoFactory.getUserDao();
+			Dao<User> userDao = (Dao<User>) daoFactory.getUserDao();
 			assertNotNull("Dao instance is null", userDao);
 		} catch (RuntimeException e) {
 			e.printStackTrace();

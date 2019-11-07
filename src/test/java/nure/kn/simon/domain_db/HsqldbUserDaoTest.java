@@ -2,6 +2,7 @@ package nure.kn.simon.domain_db;
 
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 
 import nure.kn.simon.domain.User;
 import nure.kn.simon.domain_db.HsqldbUserDao;
@@ -21,6 +22,9 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	private static final int DAY_OF_BIRTH = 13;
 	private static final int MONTH = 12;
 	private static final int YEAR = 1999;
+	private static final long ID = 1L;
+	private HsqldbUserDao hsqldbUserDao;
+	private User user;
 
 	public void testCreate() throws DatabaseException{
 	  try {
@@ -39,6 +43,38 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 			fail(e.toString());
 		}
 	}
+
+   public void testUpdate() throws DatabaseException {
+   	User testUser = user;
+       hsqldbUserDao.create(user); 
+
+       testUser.setFirstName("Kateryna");
+
+       hsqldbUserDao.update(testUser);
+       User updatedUser = hsqldbUserDao.find(testUser.getId());
+       assertNotNull(updatedUser);
+       assertEquals(testUser.getFirstName(), updatedUser.getFirstName());
+       assertEquals(testUser.getLastName(), updatedUser.getLastName());
+   }
+
+   public void testDelete() throws DatabaseException {
+   	   User deletedUser = hsqldbUserDao.create(user);
+   	   hsqldbUserDao.delete(deletedUser);
+          assertNull(hsqldbUserDao.find(deletedUser.getId()));
+   }
+   
+	public void testFind() throws DatabaseException {
+	   	 assertNotNull(user.getId());
+
+	        User ethalonUser = hsqldbUserDao.create(user);
+	        User findedUser = hsqldbUserDao.find(ethalonUser.getId());
+
+	        assertNotNull(findedUser);
+	        assertEquals(ethalonUser.getId(), findedUser.getId());
+	        assertEquals(ethalonUser.getFirstName(), findedUser.getFirstName());
+	        assertEquals(ethalonUser.getLastName(), findedUser.getLastName());
+	        }
+
 	
 	public void testFindAll(){
 		try {
@@ -54,6 +90,14 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		dao = new HsqldbUserDao(connectionFactory);
+
+        user = new User();
+        user.setId(ID);
+        user.setFirstName(FIRST_NAME);
+        user.setLastName(LAST_NAME);
+        user.setDateOfBirth(new Date());
+
+        hsqldbUserDao = new HsqldbUserDao(connectionFactory);
 	}
 
 	protected void tearDown() throws Exception {
