@@ -13,7 +13,20 @@ public class DaoFactory {
 			properties.load(getClass().getClassLoader().getResourceAsStream("settings.properties"));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
-		}
-		
+		}		
 	}
-}
+	
+	private ConnectionFactory getConnectionFactory() {
+	String user = properties.getProperty("connection.user");
+	String password = properties.getProperty("connection.password");
+	String url = properties.getProperty("connection.url");
+	String driver = properties.getProperty("connection.driver");
+	return new ConnectionFactoryImpl(driver, url, user, password);
+			}
+	
+	public Dao getUserDao() {
+		Dao result = null;
+		return result;
+	}
+	
+	}
