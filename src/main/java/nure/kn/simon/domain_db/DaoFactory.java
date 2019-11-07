@@ -8,6 +8,12 @@ public class DaoFactory {
 	private static final String USER_DAO = "dao.knure.ctde.usermanagement_db.UserDao";
 	private final Properties properties;
 	
+    private final static DaoFactory INSTANCE = new DaoFactory();
+    
+    public static DaoFactory getInstance() {
+        return INSTANCE;
+    }
+	
 	public DaoFactory(){
 		properties = new Properties();
 		try {
