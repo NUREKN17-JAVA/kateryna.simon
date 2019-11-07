@@ -25,18 +25,13 @@ public class HsqldbUserDao implements Dao<User> {
 		this.connectionFactory = connectionFactory;
 	}
 	
-
 	public ConnectionFactory getConnectionFactory() {
 		return connectionFactory;
 	}
 
-
-
 	public void setConnectionFactory(ConnectionFactory connectionFactory) {
 		this.connectionFactory = connectionFactory;
 	}
-
-
 
 	public User create(User entity) throws DatabaseException {
 		try {

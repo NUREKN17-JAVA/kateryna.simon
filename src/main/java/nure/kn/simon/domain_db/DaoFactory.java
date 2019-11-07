@@ -5,6 +5,7 @@ import java.util.Properties;
 
 public class DaoFactory {
 
+	private static final String USER_DAO = "dao.knure.ctde.usermanagement_db.UserDao";
 	private final Properties properties;
 	
 	public DaoFactory(){
@@ -24,9 +25,15 @@ public class DaoFactory {
 	return new ConnectionFactoryImpl(driver, url, user, password);
 			}
 	
-	public Dao getUserDao() {
-		Dao result = null;
+	public Dao<?> getUserDao() {
+		Dao<?> result = null;
+		try {
+			Class<?> clazz = Class.forName(properties.getProperty(USER_DAO));
+			Dao<?> userDao = (Dao<?>) clazz.newInstance();
+			userDao.setConnectionFactory(getConnectionFactory());
+		} catch (Exception e) {
+            throw new RuntimeException(e);
+		}
 		return result;
 	}
-	
 	}
