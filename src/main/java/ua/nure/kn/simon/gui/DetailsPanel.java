@@ -31,7 +31,6 @@ public class DetailsPanel extends JPanel implements ActionListener {
         initialize();
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         setVisible(false);
         parent.showBrowsePanel();
@@ -44,7 +43,7 @@ public class DetailsPanel extends JPanel implements ActionListener {
 
     private void initialize() {
         setLayout(new BorderLayout());
-        setName("detailsPanel"); //$NON-NLS-1$
+        setName("detailsPanel"); 
         add(getFieldPanel(), BorderLayout.NORTH);
         add(getCancelButton(), BorderLayout.SOUTH);
     }

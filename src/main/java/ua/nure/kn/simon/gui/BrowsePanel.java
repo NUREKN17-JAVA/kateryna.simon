@@ -54,7 +54,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getDetailsButton() {
 		if (detailsButton == null){
 			detailsButton = new JButton();
-			detailsButton.setText(Messages.getString("BrowsePanel.details"));
+			detailsButton.setText(Messages.getString("BrowsePanel.details")); 
 			detailsButton.setName("detailsButton"); 
 			detailsButton.setActionCommand("details"); 
 			detailsButton.addActionListener(this);
@@ -66,7 +66,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		if (deleteButton == null){
 			deleteButton = new JButton();
 			deleteButton.setText(Messages.getString("BrowsePanel.delete")); 
-			deleteButton.setName("deleteButton"); 
+			deleteButton.setName("deleteButton");
 			deleteButton.setActionCommand("delete"); 
 			deleteButton.addActionListener(this);
 		}
@@ -76,8 +76,8 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JButton getEditButton() {
 		if (editButton == null){
 			editButton = new JButton();
-			editButton.setText(Messages.getString("BrowsePanel.edit"));
-			editButton.setName("editButton"); 
+			editButton.setText(Messages.getString("BrowsePanel.edit")); 
+			editButton.setName("editButton");
 			editButton.setActionCommand("edit"); 
 			editButton.addActionListener(this);
 		}
@@ -105,7 +105,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 	private JTable getUserTable() {
 		if(userTable == null){
 			userTable = new JTable();
-			userTable.setName("userTable"); //$NON-NLS-1$
+			userTable.setName("userTable"); 
 			
 		}
 		return userTable;
@@ -117,7 +117,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		Long userId = null;
 		User user = null;
 		if(selectedRow==-1){
-			JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.choosing_user2"),"Error",JOptionPane.ERROR_MESSAGE); //$NON-NLS-1$ //$NON-NLS-2$
+			JOptionPane.showMessageDialog(this, Messages.getString("BrowsePanel.choosing_user2"),"Error",JOptionPane.ERROR_MESSAGE);
 		} else {
 		userId = (Long) userTable.getValueAt(userTable.getSelectedRow(),idColumn);
 		try{
@@ -139,25 +139,24 @@ public class BrowsePanel extends JPanel implements ActionListener {
 		getUserTable().setModel(model);
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		if("add".equalsIgnoreCase(actionCommand)){ //$NON-NLS-1$
+		if("add".equalsIgnoreCase(actionCommand)){ 
 			this.setVisible(false);
 			parent.showAddPanel();
 		}
-		if("edit".equalsIgnoreCase(actionCommand)){ //$NON-NLS-1$
+		if("edit".equalsIgnoreCase(actionCommand)){ 
 			int selectedRow = userTable.getSelectedRow();
 			int selectedColumn = userTable.getSelectedColumn();
 			if (selectedColumn !=-1 || selectedRow!=-1){
 				this.setVisible(false);
 				parent.showEditPanel();
 			}else{
-				JOptionPane.showMessageDialog(this,Messages.getString("BrowsePanel.choosing_user1"),"Error", JOptionPane.ERROR_MESSAGE); 
+				JOptionPane.showMessageDialog(this,Messages.getString("BrowsePanel.choosing_user1"),"Error", JOptionPane.ERROR_MESSAGE);
 			}
 			
 		}
-        if ("delete".equalsIgnoreCase(actionCommand)) { 
+        if ("delete".equalsIgnoreCase(actionCommand)) {
             User selectedUser = getSelectedUser();
             if (selectedUser != null) {
                 int result = JOptionPane.showConfirmDialog(this, Messages.getString("BrowsePanel.accept_deleting"), 
@@ -167,7 +166,7 @@ public class BrowsePanel extends JPanel implements ActionListener {
                         parent.getDao().delete(selectedUser);
                         getUserTable().setModel(new UserTableModel(parent.getDao().findAll()));
                     } catch (DatabaseException ex) {
-                        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
                     }
                 }
             }

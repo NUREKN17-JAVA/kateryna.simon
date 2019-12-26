@@ -11,7 +11,7 @@ import ua.nure.kn.simon.util.Messages;
 
 public class UserTableModel extends AbstractTableModel {
 
-	private static final String[] COLUMN_NAMES = {Messages.getString("UserTableModel.id"),Messages.getString("UserTableModel.first_name"),Messages.getString("UserTableModel.last_name")};
+	private static final String[] COLUMN_NAMES = {Messages.getString("UserTableModel.id"),Messages.getString("UserTableModel.first_name"),Messages.getString("UserTableModel.last_name")}; 
 	private static final Class[] COLUMN_CLASSES = {Long.class,String.class,String.class};
 	private List users =null;
 	
@@ -32,12 +32,10 @@ public class UserTableModel extends AbstractTableModel {
 		return users.size();
 	}
 
-	@Override
 	public int getColumnCount() {
 		return COLUMN_NAMES.length;
 	}
 
-	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		User user =(User) users.get(rowIndex);
 		switch (columnIndex){

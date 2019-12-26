@@ -60,8 +60,8 @@ public class AddPanel extends JPanel implements ActionListener {
 		if(cancelButton == null){
 			cancelButton = new JButton();
 			cancelButton.setText(Messages.getString("AddPanel.cancel")); 
-			cancelButton.setName("cancelButton");
-			cancelButton.setActionCommand("cancel"); 
+			cancelButton.setName("cancelButton"); 
+			cancelButton.setActionCommand("cancel");
 			cancelButton.addActionListener(this);
 		}
 		return cancelButton;
@@ -72,7 +72,7 @@ public class AddPanel extends JPanel implements ActionListener {
 			okButton = new JButton();
 			okButton.setText(Messages.getString("AddPanel.ok")); 
 			okButton.setName("okButton");
-			okButton.setActionCommand("ok");
+			okButton.setActionCommand("ok"); 
 			okButton.addActionListener(this);
 		}
 		return okButton;
@@ -83,7 +83,7 @@ public class AddPanel extends JPanel implements ActionListener {
 			fieldPanel = new JPanel();
 			fieldPanel.setLayout(new GridLayout(ROWS,COLS));
 			addLabeledField(fieldPanel,Messages.getString("AddPanel.first_name"),getFirstNameField()); 
-			addLabeledField(fieldPanel,Messages.getString("AddPanel.last_name"),getLastNameField());
+			addLabeledField(fieldPanel,Messages.getString("AddPanel.last_name"),getLastNameField()); 
 			addLabeledField(fieldPanel,Messages.getString("AddPanel.date_of_birth"),getDateOfBirthField()); 
 			
 		}
@@ -117,12 +117,11 @@ public class AddPanel extends JPanel implements ActionListener {
 	private JTextField getFirstNameField() {
 		if(firstNameField == null){
 			firstNameField = new JTextField();
-			firstNameField.setName("firstNameField");
+			firstNameField.setName("firstNameField"); 
 		}
 		return firstNameField;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		if("ok".equalsIgnoreCase(e.getActionCommand())){ 
 			User user = new User();

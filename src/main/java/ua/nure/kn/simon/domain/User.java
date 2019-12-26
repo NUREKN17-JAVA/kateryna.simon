@@ -4,17 +4,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class User implements Serializable {
-
-
-	private static final long serialVersionUID = 8639206768998662271L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1942568892054644812L;
 
 	private Long id;
-    
-    private String firstName;
-    
-    private String lastName;
-    
-    private Date dateOfBirth;
+        private String firstName;   
+        private String lastName;
+        private Date dateOfBirth;
 
 	public User(String firstName, String lastName, Date date) {
 		this.firstName = firstName;

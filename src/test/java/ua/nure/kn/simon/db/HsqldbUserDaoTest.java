@@ -13,7 +13,7 @@ import org.dbunit.dataset.xml.XmlDataSet;
 import ua.nure.kn.simon.domain.User;
 import ua.nure.kn.simon.db.HsqldbUserDao;
 
-public class HsqldbUserDaoTest extends DatabaseTestCase {  
+public class HsqldbUserDaoTest extends DatabaseTestCase {
 	
 	private HsqldbUserDao dao;
 	private ConnectionFactory connectionFactory;
@@ -29,7 +29,7 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
     private User user;
 
     private static final String UPDATED_FIRST_NAME = "Katya";
-    private static final String FIRST_NAME = "Steve";
+	private static final String FIRST_NAME = "Steve";
     private static final String LAST_NAME = "Jobs";
  
     private static final Long ID = 4L;

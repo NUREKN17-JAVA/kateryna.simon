@@ -169,13 +169,13 @@ public class EditPanel extends JPanel implements ActionListener {
 	    private void clearFields() {
 	        Color bgColor = Color.WHITE;
 
-	        getFirstNameField().setText(""); //$NON-NLS-1$
+	        getFirstNameField().setText(""); 
 	        getFirstNameField().setBackground(bgColor);
 
-	        getLastNameField().setText(""); //$NON-NLS-1$
+	        getLastNameField().setText(""); 
 	        getLastNameField().setBackground(bgColor);
 
-	        getDateOfBirthField().setText(""); //$NON-NLS-1$
+	        getDateOfBirthField().setText(""); 
 	        getDateOfBirthField().setBackground(bgColor);
 	    }
 	    
