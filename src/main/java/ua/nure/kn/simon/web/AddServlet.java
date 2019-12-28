@@ -12,10 +12,6 @@ import ua.nure.kn.simon.db.DatabaseException;
 import ua.nure.kn.simon.domain.User;
 
 public class AddServlet extends EditServlet {
-
-	
-
-
 	
 	protected void showPage(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

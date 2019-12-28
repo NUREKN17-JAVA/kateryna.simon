@@ -8,8 +8,8 @@ public class DaoFactoryImpl extends DaoFactory {
 	public DAO<User> getUserDao(){
 		DAO<User> result = null;
 		try {
-			Class<?> clazz = Class.forName(properties.getProperty(USER_DAO));
-			result = (DAO<User>) clazz.newInstance();
+			Class<?> clas = Class.forName(properties.getProperty(USER_DAO));
+			result = (DAO<User>) clas.newInstance();
 			result.setConnectionFactory(getConnectionFactory());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
