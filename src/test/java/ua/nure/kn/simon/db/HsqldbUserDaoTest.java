@@ -29,9 +29,8 @@ public class HsqldbUserDaoTest extends DatabaseTestCase {
     private User user;
 
     private static final String UPDATED_FIRST_NAME = "Katya";
-	private static final String FIRST_NAME = "Steve";
+    private static final String FIRST_NAME = "Steve";
     private static final String LAST_NAME = "Jobs";
- 
     private static final Long ID = 4L;
 
 	public void testCreate() throws DatabaseException{
